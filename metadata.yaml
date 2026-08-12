@@ -1,0 +1,5 @@
+name: astrbot_plugin_napcat_monitor
+desc: NapCat 掉线监控 + 飞书告警插件，监听 OneBot 心跳，断连/重连/异常事件实时推送到飞书群机器人
+version: 1.0.0
+author: TsoiTZF
+repo: https://github.com/TsoiTZF/astrbot_plugin_napcat_monitor

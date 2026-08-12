@@ -1,0 +1,43 @@
+{
+  "feishu_webhook": {
+    "description": "飞书群机器人 Webhook 地址",
+    "type": "string",
+    "hint": "在飞书群中添加自定义机器人后获取",
+    "default": "https://open.feishu.cn/open-apis/bot/v2/hook/a8ba49e4-927a-4464-968c-44f04cdffdaf"
+  },
+  "feishu_secret": {
+    "description": "飞书机器人签名密钥（启用签名校验时必填）",
+    "type": "string",
+    "hint": "在机器人「安全设置」→「签名校验」中获取",
+    "default": "N3di4S4hk4j64FgEEVB7fe"
+  },
+  "check_interval": {
+    "description": "主动探测间隔（秒）",
+    "type": "int",
+    "hint": "插件多久主动探测一次 NapCat 状态，默认 30s",
+    "default": 30
+  },
+  "alert_cooldown": {
+    "description": "同一事件告警冷却时间（秒），避免刷屏",
+    "type": "int",
+    "hint": "默认 300s（5 分钟）内同类事件只告警一次",
+    "default": 300
+  },
+  "alert_at_all": {
+    "description": "严重告警是否 @所有人",
+    "type": "bool",
+    "hint": "掉线时是否在飞书群 @所有人",
+    "default": true
+  },
+  "bot_alias": {
+    "description": "机器人别名（用于告警标题区分多实例）",
+    "type": "string",
+    "hint": "例如：生产-小号A",
+    "default": "AstrBot-NapCat"
+  },
+  "enable_startup_notice": {
+    "description": "插件启动时是否发送一条上线通知",
+    "type": "bool",
+    "default": true
+  }
+}
