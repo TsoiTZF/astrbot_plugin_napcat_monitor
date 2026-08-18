@@ -2,42 +2,74 @@
   "feishu_webhook": {
     "description": "飞书群机器人 Webhook 地址",
     "type": "string",
-    "hint": "在飞书群中添加自定义机器人后获取",
-    "default": "https://open.feishu.cn/open-apis/bot/v2/hook/a8ba49e4-927a-4464-968c-44f04cdffdaf"
+    "hint": "留空时仍会执行本地探测，但不会发送飞书通知",
+    "default": ""
   },
   "feishu_secret": {
-    "description": "飞书机器人签名密钥（启用签名校验时必填）",
+    "description": "飞书机器人签名密钥",
     "type": "string",
-    "hint": "在机器人「安全设置」→「签名校验」中获取",
-    "default": "N3di4S4hk4j64FgEEVB7fe"
+    "hint": "仅在飞书机器人启用签名校验时填写",
+    "default": ""
   },
   "check_interval": {
     "description": "主动探测间隔（秒）",
     "type": "int",
-    "hint": "插件多久主动探测一次 NapCat 状态，默认 30s",
+    "hint": "每轮并发调用全部 aiocqhttp 实例的 OneBot get_status 接口",
     "default": 30
   },
-  "alert_cooldown": {
-    "description": "同一事件告警冷却时间（秒），避免刷屏",
+  "probe_timeout": {
+    "description": "单次 API 探测超时（秒）",
     "type": "int",
-    "hint": "默认 300s（5 分钟）内同类事件只告警一次",
+    "hint": "超时、调用异常或返回离线状态均计为一次失败",
+    "default": 10
+  },
+  "failure_threshold": {
+    "description": "连续失败判离线次数",
+    "type": "int",
+    "hint": "用于过滤单次网络抖动；建议设置为 2 或 3",
+    "default": 2
+  },
+  "alert_cooldown": {
+    "description": "同实例同类告警冷却时间（秒）",
+    "type": "int",
+    "hint": "通知发送成功后才进入冷却；设为 0 可关闭冷却",
     "default": 300
   },
   "alert_at_all": {
-    "description": "严重告警是否 @所有人",
+    "description": "离线告警是否 @所有人",
     "type": "bool",
-    "hint": "掉线时是否在飞书群 @所有人",
+    "default": true
+  },
+  "alert_on_initial_failure": {
+    "description": "启动后首次确认离线时是否告警",
+    "type": "bool",
+    "hint": "关闭后，只有先探测成功再掉线才会告警",
     "default": true
   },
   "bot_alias": {
-    "description": "机器人别名（用于告警标题区分多实例）",
+    "description": "监控来源别名",
     "type": "string",
-    "hint": "例如：生产-小号A",
+    "hint": "显示在飞书卡片底部，用于区分不同 AstrBot 部署",
     "default": "AstrBot-NapCat"
   },
   "enable_startup_notice": {
-    "description": "插件启动时是否发送一条上线通知",
+    "description": "插件启动时发送飞书通知",
     "type": "bool",
     "default": true
+  },
+  "enable_recovery_notice": {
+    "description": "NapCat 从离线恢复时发送通知",
+    "type": "bool",
+    "default": true
+  },
+  "notify_timeout": {
+    "description": "飞书请求超时时间（秒）",
+    "type": "int",
+    "default": 10
+  },
+  "notify_retries": {
+    "description": "飞书发送失败后的重试次数",
+    "type": "int",
+    "default": 2
   }
 }

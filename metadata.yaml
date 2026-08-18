@@ -1,5 +1,9 @@
 name: astrbot_plugin_napcat_monitor
-desc: NapCat 掉线监控 + 飞书告警插件，监听 OneBot 心跳，断连/重连/异常事件实时推送到飞书群机器人
-version: 1.0.0
+display_name: NapCat 状态监控
+short_desc: 主动探测全部 aiocqhttp 实例，并通过飞书发送离线与恢复通知
+desc: NapCat OneBot 主动探测与飞书告警插件，支持多 aiocqhttp 实例、连续失败判定、恢复通知和告警冷却
+version: 2.0.0
 author: TsoiTZF
 repo: https://github.com/TsoiTZF/astrbot_plugin_napcat_monitor
+support_platforms:
+  - aiocqhttp
